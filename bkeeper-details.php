@@ -39,7 +39,7 @@ require("connection.php");
             ?>
             <!-- Page content-->
             <div class="container-fluid">
-                <h1 class="mt-4">Welcome to BKEEPER MANAGEMENT SYSTEM!</h1>
+                <h1 class="mt-4 text-center text-info">MY RESUME</h1>
                 <?php
                 if (isset($_POST['save_resume'])) {
 

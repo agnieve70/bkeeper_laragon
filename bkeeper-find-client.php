@@ -60,7 +60,8 @@ require("connection.php");
                 <div class="row">
 
                     <?php
-                    $sql = "SELECT * FROM users WHERE role = 'client' AND id NOT IN (SELECT client_id FROM applicants WHERE bkeeper_id = ".$_SESSION['user_id'].") ";
+                    $sql = "SELECT * FROM users WHERE role = 'client' AND id NOT IN (SELECT client_id FROM applicants WHERE bkeeper_id = ".$_SESSION['user_id']. ") 
+                    AND id NOT IN (SELECT client_id FROM bkeepers WHERE bkeeper_id = " . $_SESSION['user_id'] . ")";
                     $result = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {

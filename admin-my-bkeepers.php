@@ -47,21 +47,21 @@ require("connection.php");
             ?>
             <!-- Page content-->
             <div class="container-fluid">
-                <h1 class="mt-4">Your BookKeepers</h1>
+                <h1 class="mt-4">Bookkeepers</h1>
                 <!-- <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p> -->
                 <div class="row">
                     <?php
-                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                            $ratings = $_POST['ratings'];
-                            $id = $_POST['id'];
-                            $sql = "UPDATE users SET ratings=".$ratings. " WHERE id=" . $id ;
+                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                        $ratings = $_POST['ratings'];
+                        $id = $_POST['id'];
+                        $sql = "UPDATE users SET ratings=" . $ratings . " WHERE id=" . $id;
 
-                            if ($conn->query($sql) === TRUE) {
-                                echo "<p class='text-success'>Record updated successfully</p>";
-                            } else {
-                                echo "<p class='text-danger>' Error updating record: " . $conn->error.'</p>';
-                            }
+                        if ($conn->query($sql) === TRUE) {
+                            echo "<p class='text-success'>Record updated successfully</p>";
+                        } else {
+                            echo "<p class='text-danger>' Error updating record: " . $conn->error . '</p>';
                         }
+                    }
                     ?>
                     <?php
                     $sql = "SELECT * FROM users WHERE id IN (SELECT bkeeper_id from bkeepers WHERE client_id = " . $_SESSION['user_id'] . ") ";
@@ -77,33 +77,35 @@ require("connection.php");
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
-                                                <h4 class="card-title text-primary">' . $row['name'] .'
-                                                </h4>
+                                                <a href="admin-bkeeper-message.php?bkeeper_id='.$row['id'].'" style="text-decoration:none">
+                                                    <h4 class="card-title text-primary">' . $row['name'] . '
+                                                    </h4>
+                                                </a>
                                                 ';
-                        
 
-                                    echo '<form action="'. htmlspecialchars($_SERVER["PHP_SELF"]).'" method="post" role="form" >
-                                        <input type="hidden" name="id" value="'.$row['id'].'" />
+
+                            echo '<form action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '" method="post" role="form" >
+                                        <input type="hidden" name="id" value="' . $row['id'] . '" />
                                         <div class="input-group mb-3">
                                             <input name ="ratings" value="1" type="number" max="5" min="1" class="form-control" />
                                             <input type="submit" class="btn btn-outline-warning" type="button" id="button-addon2"  value="Change Rating"/>
                                         </div>
                                     </form>';
-                                
-                                    $stars = $row['ratings'];
-                                    $no_stars = 5 - $stars;
 
-                                    $count2 = 1;
-                                    while($count2 <= $stars){
-                                        echo '<span class="fa fa-star checked"></span>';
-                                        $count2++;
-                                    }
-                                    $count3 = 1;
+                            $stars = $row['ratings'];
+                            $no_stars = 5 - $stars;
 
-                                    while ($count3 <= $no_stars) {
-                                        echo '<span class="fa fa-star"></span>';
-                                        $count3++;
-                                    }
+                            $count2 = 1;
+                            while ($count2 <= $stars) {
+                                echo '<span class="fa fa-star checked"></span>';
+                                $count2++;
+                            }
+                            $count3 = 1;
+
+                            while ($count3 <= $no_stars) {
+                                echo '<span class="fa fa-star"></span>';
+                                $count3++;
+                            }
                             echo '<hr />
                                                 <p class="card-text"></p>
                                                 <p class="card-text"><small class="text-muted">' . $row['date_created'] . '</small></p>
@@ -114,6 +116,8 @@ require("connection.php");
                             </div>
                             ';
                         }
+                    } else {
+                        echo '<p>No Data</p>';
                     }
                     ?>
 

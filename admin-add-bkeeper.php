@@ -56,7 +56,11 @@ require("connection.php");
                         $sql = "INSERT INTO bkeepers (client_id, bkeeper_id, status)
                                 VALUES (" . $_SESSION['user_id'] . ", " . $bkeeper_id . ", 1)";
 
+                        $sql2 = "DELETE FROM applicants WHERE bkeeper_id =".$bkeeper_id;
+
                         if (mysqli_query($conn, $sql)) {
+                            mysqli_query($conn, $sql2);
+
                             echo '<script>alert("Successfully Added a BKeeper!"); window.location.href="admin-my-bkeepers.php";</script>';
                         } else {
                             echo "Error: " . $sql . "<br>" . mysqli_error($conn);

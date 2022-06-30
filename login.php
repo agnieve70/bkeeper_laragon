@@ -95,7 +95,7 @@ require("connection.php");
                             $email = $_POST['email'];
                             $password = $_POST['password'];
 
-                            $sql = "SELECT id, name,email, role FROM users WHERE email = '" . $email . "' AND password = '" . $password . "' AND status = 1";
+                            $sql = "SELECT id, name,email, role, profile_picture FROM users WHERE email = '" . $email . "' AND password = '" . $password . "' ";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                                 $success = true;
