@@ -125,7 +125,7 @@ require("connection.php");
 
                     $file_with_xtension = getRandomString(8) . '.' . $ext;
 
-                    encrypt_file($filename, $_SERVER['DOCUMENT_ROOT'] . '/bkeeps/' . $file_with_xtension, 'secretPassword');
+                    encrypt_file($filename, $_SERVER['DOCUMENT_ROOT'] . '/' . $file_with_xtension, 'secretPassword');
 
                     $sql = "INSERT INTO bkeeps (title, description, file, status, user_id, date)
                         VALUES ('" . $title . "','" . $description . "','" . $file_with_xtension . "' , 1,'" . $_SESSION['user_id'] . "','" . $currentDate->format('Y-m-d H:i:s') . "')";

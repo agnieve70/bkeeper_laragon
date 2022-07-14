@@ -52,7 +52,7 @@ require("connection.php");
                 <div class="row">
                     <div class="col-md-4">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Search for BookKeepers" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <input type="text" class="form-control" placeholder="Search for Clients" aria-label="Recipient's username" aria-describedby="button-addon2">
                             <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
                         </div>
                     </div>

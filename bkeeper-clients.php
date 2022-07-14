@@ -73,7 +73,7 @@ require("connection.php");
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
-                                                <h4 class="card-title text-primary"><a class="text-decoration-none" href="bkeeper-admin-message.php?id='.$row['id'].'">' . $row['name'] . '</a></h4>
+                                                <h4 class="card-title text-primary"><a class="text-decoration-none" href="bkeeper-documents.php?id='.$row['id'].'">' . $row['name'] . '</a></h4>
                                                 ';
 
                             echo '<hr />

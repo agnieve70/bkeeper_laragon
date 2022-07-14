@@ -102,7 +102,7 @@ require("connection.php");
                             while ($row = mysqli_fetch_assoc($result)) {
                                 $extension = explode(".", $row['file']);
                                 $ext = $extension[1];
-                                $dec_url = $_SERVER['DOCUMENT_ROOT'] . '/bkeeps/' . $row['file'];
+                                $dec_url = $_SERVER['DOCUMENT_ROOT'] . '/' . $row['file'];
                                 // Output to inline PDF
                                 $decrypted = decrypt_file($dec_url, $ext, 'secretPasswords');
                                 echo "<a class='btn btn-primary' href='" . $decrypted . "' target='_blank'>Decrypted File</a> 
