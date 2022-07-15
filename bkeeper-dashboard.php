@@ -43,7 +43,7 @@ require("connection.php");
                         <div class="card px-3 py-5 shadow bg-primary">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <h1 class="text-light" style="font-size: 60px">23</h1>
+                                    <h1 class="text-light" style="font-size: 60px">0</h1>
                                 </div>
                                 <div class="col-md-8">
                                     <h2 class="text-light">No. of Clients</h2>
@@ -55,7 +55,7 @@ require("connection.php");
                         <div class="card px-3 py-5 shadow bg-success">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <h1 class="text-light" style="font-size: 60px">23</h1>
+                                    <h1 class="text-light" style="font-size: 60px">0</h1>
                                 </div>
                                 <div class="col-md-8">
                                     <h2 class="text-light">No. of Transactions</h2>
@@ -67,7 +67,7 @@ require("connection.php");
                         <div class="card px-3 py-5 shadow bg-warning">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <h1 class="text-light" style="font-size: 60px">23</h1>
+                                    <h1 class="text-light" style="font-size: 60px">0</h1>
                                 </div>
                                 <div class="col-md-8">
                                     <h2 class="text-light">No. of Documents</h2>

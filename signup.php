@@ -157,7 +157,7 @@ require("connection.php");
                                             echo '<div class="alert alert-success" role="alert">
                                                 You Registered Successfully!
                                             </div>';
-                                            echo "<script>window.location.href='https://bkeeper.club/login.php'</script>";
+                                            echo "<script>window.location.href='https://vibrant-chaise-47616.herokuapp.com/login.php'</script>";
                                         } else {
                                             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                                         }
