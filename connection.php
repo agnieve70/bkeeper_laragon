@@ -1,8 +1,8 @@
 <?php
-$servername = "31.22.4.112";
-$username = "agnieves_admin";
-$password = "Evien05131997";
-$database = "agnieves_bkeeper";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "bkeeper";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $database);

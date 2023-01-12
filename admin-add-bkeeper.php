@@ -58,6 +58,18 @@ require("connection.php");
 
                         $sql2 = "DELETE FROM applicants WHERE bkeeper_id =".$bkeeper_id;
 
+                        $str = rand();
+                        $rand = md5($str);
+
+                        $sql3 = "INSERT INTO notification (`title`, `link`, `user_id`, `date`, `code`)
+                                VALUES ('You are hired by a Client', 
+                                        'http://localhost/bkeeper_laragon/bkeeper-clients.php?id=4321',
+                                        '" . $bkeeper_id . "',
+                                        '" . date("Y-m-d h:i:sa") . "', '".$rand."')";
+
+                        mysqli_query($conn, $sql3);
+
+
                         if (mysqli_query($conn, $sql)) {
                             mysqli_query($conn, $sql2);
 

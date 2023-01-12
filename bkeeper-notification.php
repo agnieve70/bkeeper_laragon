@@ -28,52 +28,35 @@ require("connection.php");
 <body>
     <div class="d-flex" id="wrapper">
         <?php
-        include('admin-sidebar.php');
+        include('bkeeper-sidebar.php');
         ?>
         <!-- Page content wrapper-->
         <div id="page-content-wrapper">
             <?php
-            include('admin-nav.php');
+            include('bkeeper-nav.php');
             ?>
             <!-- Page content-->
             <div class="container-fluid">
-                <h1 class="mt-4 text-center text-info">BOOKKEEPER MANAGEMENT SYSTEM</h1>
+                <h1 class="mt-4">Notifications</h1>
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="card px-3 py-4 shadow bg-primary">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h1 class="text-light" style="font-size: 60px">0</h1>
-                                </div>
-                                <div class="col-md-8">
-                                    <h2 class="text-light">No. of Bkeepers</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card px-3 py-4 shadow bg-success">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h1 class="text-light" style="font-size: 60px">0</h1>
-                                </div>
-                                <div class="col-md-8">
-                                    <h2 class="text-light">No. of Transactions</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card px-3 py-4 shadow bg-warning">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h1 class="text-light" style="font-size: 60px">0</h1>
-                                </div>
-                                <div class="col-md-8">
-                                    <h2 class="text-light">No. of Documents</h2>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-md-10">
+                        <ul class="list-group">
+                            <?php
+                            $sql = "SELECT * FROM notification WHERE user_id =  " . $_SESSION['user_id'] ;
+                            $result = mysqli_query($conn, $sql);
+
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo '<li class="list-group-item">
+                                            <span>'.$row['date'].'</span> <br/>
+                                            <a href="'.$row['link'].'" class="text-decoration-none">'.$row['title'].'</a>
+                                        </li>';
+                                }
+                            }
+
+                            ?>
+
+                        </ul>
                     </div>
                 </div>
                 <!-- <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>

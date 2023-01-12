@@ -40,6 +40,15 @@ require("connection.php");
         <?php
         include('admin-sidebar.php');
         ?>
+
+        <?php
+        if(isset($_GET['code'])){
+            $sql2 = "UPDATE notification SET `code`='"."' WHERE `code` = '" .$_GET['code']. "'";
+            $conn->query($sql2);
+        }
+
+        ?>
+
         <!-- Page content wrapper-->
         <div id="page-content-wrapper">
             <?php

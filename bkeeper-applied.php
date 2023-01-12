@@ -47,7 +47,7 @@ require("connection.php");
             ?>
             <!-- Page content-->
             <div class="container-fluid">
-                <h1 class="mt-4">Find Client</h1>
+                <h1 class="mt-4">Applied Client</h1>
                 <!-- <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p> -->
                 <div class="row">
                     <div class="col-md-4">
@@ -61,7 +61,7 @@ require("connection.php");
 
                     <?php
                     $sql = "SELECT * FROM users WHERE role = 'client' 
-                    AND id IN (SELECT client_id FROM applicants WHERE bkeeper_id = " . $_SESSION['user_id'] . " AND bkeeper_id NOT IN (SELECT bkeeper_id FROM bkeepers WHERE bkeepers.bkeeper_id = ".$_SESSION['user_id'].")) ";
+                    AND id IN (SELECT client_id FROM applicants WHERE bkeeper_id = " . $_SESSION['user_id'] . " ) ";
                     $result = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {

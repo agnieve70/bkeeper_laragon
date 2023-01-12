@@ -13,5 +13,7 @@
         <!-- <a class="list-group-item list-group-item-action list-group-item-light p-3" href="bkeeper-documents.php"><i class="fa fa-users"></i> Documents</a> -->
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="bkeeper-applied.php"><i class="fa fa-user-plus"></i> Applied Clients</a>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="bkeeper-details.php"><i class="fa fa-file"></i> My Resume</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="bkeeper-messages.php"><i class="fa fa-envelope"></i> Messages</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="bkeeper-notification.php"><i class="fa fa-bell"></i> Notifications</a>
     </div>
 </div>

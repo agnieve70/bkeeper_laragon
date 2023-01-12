@@ -121,14 +121,32 @@ require("connection.php");
                     $currentDate = new DateTime();
                     $filename = $_FILES["UploadFileName"]["tmp_name"];
                     $ext = pathinfo($_FILES["UploadFileName"]['name'], PATHINFO_EXTENSION);
-
+                    $client_id = $_POST['client_id'];
 
                     $file_with_xtension = getRandomString(8) . '.' . $ext;
 
                     encrypt_file($filename, $_SERVER['DOCUMENT_ROOT'] . '/' . $file_with_xtension, 'secretPassword');
 
-                    $sql = "INSERT INTO bkeeps (title, description, file, status, user_id, date)
-                        VALUES ('" . $title . "','" . $description . "','" . $file_with_xtension . "' , 1,'" . $_SESSION['user_id'] . "','" . $currentDate->format('Y-m-d H:i:s') . "')";
+                    $sql = "INSERT INTO bkeeps (title, description, file, status, user_id, `date`, client_id)
+                        VALUES ('" . $title . "',
+                        '" . $description . "',
+                        '" . $file_with_xtension . "' ,
+                         1,
+                         '" . $_SESSION['user_id'] . "',
+                         '" . $currentDate->format('Y-m-d H:i:s') . "', 
+                         ".$client_id.")";
+
+
+                    $str = rand();
+                    $rand = md5($str);
+
+                    $sql2 = "INSERT INTO notification (`title`, `link`, `user_id`, `date`, `code`)
+                                VALUES ('Message From Bkeeper', 
+                                        'http://localhost/bkeeper_laragon/admin-documents.php?id=" . $client_id ."',
+                                        '" . $client_id . "',
+                                        '" . date("Y-m-d h:i:sa") . "', '".$rand."')";
+
+                    mysqli_query($conn, $sql2);
 
                     if (mysqli_query($conn, $sql)) {
                         echo '<script>
@@ -151,6 +169,7 @@ require("connection.php");
                         <div class="form-group">
                             <label for="title">Title</label>
                             <input type="text" class="form-control" name="title" id="title" required>
+                            <input type="text" class="form-control" name="client_id" value="<?php echo isset($_GET['id']) ? $_GET['id'] : '' ?>" id="title" required>
                         </div>
                         <div class="form-group">
                             <label for="description">Description</label>

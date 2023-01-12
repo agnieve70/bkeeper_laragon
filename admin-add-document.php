@@ -126,8 +126,36 @@ require("connection.php");
 
                     encrypt_file($filename, $_SERVER['DOCUMENT_ROOT'] . '/' . $file_with_xtension, 'secretPassword');
 
-                    $sql = "INSERT INTO bkeeps (title, description, file, status, user_id, date)
-                        VALUES ('" . $title . "','" . $description . "','" . $file_with_xtension . "' , 1,'" . $_SESSION['user_id'] . "','" . $currentDate->format('Y-m-d H:i:s') . "')";
+                    $sql = "INSERT INTO bkeeps (title, description, file, status, user_id, date, client_id)
+                        VALUES ('" . $title . "',
+                        '" . $description . "',
+                        '" . $file_with_xtension . "' ,
+                         1,
+                         '" . $_SESSION['user_id'] . "',
+                         '" . $currentDate->format('Y-m-d H:i:s') . "',
+                         ".$_SESSION['user_id'].")";
+
+                    $sql3 = "SELECT * from bkeepers WHERE client_id = ".$_SESSION['user_id'];
+
+                    $result3 = mysqli_query($conn, $sql3);
+
+                    if (mysqli_num_rows($result3) > 0) {
+                        while ($row = mysqli_fetch_assoc($result3)) {
+
+                            $str = rand();
+                            $rand = md5($str);
+
+                            $sql2 = "INSERT INTO notification (`title`, `link`, `user_id`, `date`, `code`)
+                                VALUES ('A Document was created', 
+                                        'http://localhost/bkeeper_laragon/bkeeper-documents.php?id=" . $_SESSION['user_id']."',
+                                        '" . $row['bkeeper_id'] . "',
+                                        '" . date("Y-m-d h:i:sa") . "', '".$rand."')";
+
+                            mysqli_query($conn, $sql2);
+                        }
+                    }
+
+
 
                     if (mysqli_query($conn, $sql)) {
                         echo '<div class="alert alert-success" role="alert">

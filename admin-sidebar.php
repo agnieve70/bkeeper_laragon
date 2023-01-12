@@ -22,6 +22,8 @@
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="admin-find-bkeepers.php"><i class="fa fa-search"></i> Find BKeepers</a>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="admin-documents.php"><i class="fa fa-file"></i> Documents</a>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="admin-applicants.php"><i class="fa fa-user-plus"></i> Applicants</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="admin-messages.php"><i class="fa fa-envelope"></i> Messages</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="admin-notification.php"><i class="fa fa-bell"></i> Notifications</a>
         <!-- <a class="list-group-item list-group-item-action list-group-item-light p-3" href="admin-post-hiring.php"><i class="fa fa-users"></i> Post Hiring</a> -->
     </div>
 </div>

@@ -38,12 +38,12 @@ require("connection.php");
 <body>
     <div class="d-flex" id="wrapper">
         <?php
-        include('admin-sidebar.php');
+        include('bkeeper-sidebar.php');
         ?>
         <!-- Page content wrapper-->
         <div id="page-content-wrapper">
             <?php
-            include('admin-nav.php');
+            include('bkeeper-nav.php');
             ?>
             <!-- Page content-->
             <div class="container-fluid">
@@ -55,6 +55,17 @@ require("connection.php");
 
                         $sql = "INSERT INTO applicants (bkeeper_id, client_id, status)
                                 VALUES (" . $_SESSION['user_id'] . ", " . $client_id . ", 0)";
+
+                        $str = rand();
+                        $rand = md5($str);
+
+                        $sql2 = "INSERT INTO notification (`title`, `link`, `user_id`, `date`, `code`)
+                                VALUES ('Bookkeeper Applied', 
+                                        'http://localhost/bkeeper_laragon/admin-applicants.php?',
+                                        '" . $client_id . "',
+                                        '" . date("Y-m-d h:i:sa") . "', '".$rand."')";
+
+                        mysqli_query($conn, $sql2);
 
                         if (mysqli_query($conn, $sql)) {
                             echo '<script>alert("Successfully Applied to Client!"); window.location.href="bkeeper-clients.php";</script>';

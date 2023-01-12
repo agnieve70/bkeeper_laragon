@@ -35,6 +35,14 @@ require("connection.php");
             <?php
             include('bkeeper-nav.php');
             ?>
+
+            <?php
+            if(isset($_GET['code'])){
+                $sql2 = "UPDATE notification SET `code`='"."' WHERE `code` = '" .$_GET['code']. "'";
+                $conn->query($sql2);
+            }
+
+            ?>
             <!-- Page content-->
             <div class="container-fluid">
                 <h1 class="mt-4">Your Documents</h1>
